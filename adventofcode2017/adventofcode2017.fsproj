@@ -7,6 +7,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="day1.fs" />
+    <Compile Include="day2.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\day2_input.txt" />
+    <Content Include="assets\day2_theory.txt" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

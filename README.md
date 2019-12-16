@@ -1,3 +1,7 @@
-# Advent of Code - 2017
+# Advent of Code Solutions
 
-Here is where I've been experimenting with F# in solving some of the [Advent of Code 2017](https://adventofcode.com) problems.
+
+These are my attempts at solving the Advent of Code projects, broken down by year.
+
+
+[![Run on Repl.it](https://repl.it/badge/github/jtucker/adventofcode)](https://repl.it/github/jtucker/adventofcode)

@@ -1,6 +1,6 @@
 open System.IO
 
-let inputData = File.ReadAllLines "adventofcode2019\\inputdata\\day1.txt"
+let inputData = File.ReadAllLines "inputdata\\day1.txt"
 let calculateMass mass = 
     System.Math.Max(0, ((mass / 3) - 2))
 

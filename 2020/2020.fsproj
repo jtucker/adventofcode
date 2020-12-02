@@ -1,9 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <RootNamespace>_2020</RootNamespace>
+    <AssemblyName>advent</AssemblyName>
+    <RootNamespace>codingforbeer</RootNamespace>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AdventArguments.fs" />
     <Compile Include="Day1.fsx" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

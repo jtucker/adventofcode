@@ -47,12 +47,11 @@ let fileContents path =
     with 
         | :? FileNotFoundException -> sprintf "File path (%s) not found." path |> ignore; Seq.empty
 
-let validSledPasswordRules = 
-    (Seq.map (PasswordRule.parse >> PasswordRule.validate) (fileContents @"2020\assets\day2.txt"))
+
+let validatePasswords validator = 
+    (Seq.map (PasswordRule.parse >> validator) (fileContents @"2020\assets\day2.txt"))
     |> Seq.filter (id)
     |> Seq.length
 
-let validTobogganPasswordRules = 
-    (Seq.map (PasswordRule.parse >> PasswordRule.tobogganValidate) (fileContents @"2020\assets\day2.txt"))
-    |> Seq.filter (id)
-    |> Seq.length
+Console.WriteLine(sprintf "The number of valid sled passwords is %i" (validatePasswords PasswordRule.validate))
+Console.WriteLine(sprintf "The number of valid toboggan passwords is %i" (validatePasswords PasswordRule.tobogganValidate))

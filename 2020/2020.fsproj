@@ -7,9 +7,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AdventArguments.fs" />
-    <Compile Include="Day1.fsx" />
-    <Compile Include="Program.fs" />
+    <Compile Include="Day1.fs" />
     <Compile Include="Day2.fs" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

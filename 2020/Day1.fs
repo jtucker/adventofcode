@@ -1,3 +1,5 @@
+module codingforbeer.AdventOfCode.Day1
+
 let entries =
     [ 1587
       1407
@@ -208,3 +210,9 @@ let findPairs (x, y) = x + y = 2020
 
 let collectTriple x = entries |> List.collect (fun y -> entries |> List.map (fun z -> (x, y, z)))
 let findTriple (x, y, z) = x + y + z = 2020
+
+let x, y = collectFind entries collectPairs findPairs
+System.Console.WriteLine(sprintf "%i * %i = %i" x y (x * y))
+
+let a, b, c = collectFind entries collectTriple findTriple
+System.Console.WriteLine(sprintf "%i * %i * %i = %i" a b c (a * b * c))

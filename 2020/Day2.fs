@@ -35,19 +35,6 @@ module PasswordRule =
     let validate rule = 
         rule.Password |> String.filter(fun c -> c = rule.Letter) |> isInRange rule.Positions
 
-open System.IO
-
-let fileContents path =
-    try
-        seq {
-            let reader = new StreamReader(File.OpenRead path)        
-            while( not reader.EndOfStream ) do 
-                yield reader.ReadLine()
-        }
-    with 
-        | :? FileNotFoundException -> sprintf "File path (%s) not found." path |> ignore; Seq.empty
-
-
 let validatePasswords validator = 
     (Seq.map (PasswordRule.parse >> validator) (fileContents @"2020\assets\day2.txt"))
     |> Seq.filter (id)

@@ -4,5 +4,6 @@ storage: none
 framework: net50, netcoreapp3.1, netstandard2.0, netstandard2.1
 
 nuget Argu
+nuget FParsec 1.1.1
 nuget xunit
 nuget xunit.runner.visualstudio

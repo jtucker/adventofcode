@@ -36,7 +36,7 @@ module PasswordRule =
         rule.Password |> String.filter(fun c -> c = rule.Letter) |> isInRange rule.Positions
 
 let validatePasswords validator = 
-    (Seq.map (PasswordRule.parse >> validator) (fileContents @"2020\assets\day2.txt"))
+    (Seq.map (PasswordRule.parse >> validator) (fileLines @"2020\assets\day2.txt"))
     |> Seq.filter (id)
     |> Seq.length
 

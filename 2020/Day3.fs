@@ -5,7 +5,7 @@ type Position = {
     Second: int
 }
 
-let arrContent = fileContents @"2020\assets\day3.txt" |> Array.ofSeq |> array2D
+let arrContent = fileLines @"2020\assets\day3.txt" |> Array.ofSeq |> array2D
 let slopes = [(1, 1); (3, 1); (5, 1); (7, 1); (1, 2)]
 let startState = ({ First = 0; Second = 0 }, 0)
 

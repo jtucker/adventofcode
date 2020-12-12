@@ -5,6 +5,8 @@ NUGET
     Argu (6.1.1)
       FSharp.Core (>= 4.3.2)
       System.Configuration.ConfigurationManager (>= 4.4)
+    FParsec (1.1.1)
+      FSharp.Core (>= 4.3.4)
     FSharp.Core (5.0)
     Microsoft.NETCore.Platforms (5.0)
     Microsoft.Win32.SystemEvents (5.0) - restriction: || (== net50) (== netcoreapp3.1) (&& (== netstandard2.0) (>= netcoreapp3.0)) (&& (== netstandard2.1) (>= netcoreapp3.0))

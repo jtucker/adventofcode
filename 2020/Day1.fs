@@ -202,17 +202,20 @@ let entries =
       1809
       1576 ]
 
-let collectFind list f m =
-    list |> List.collect (f) |> List.find (m)
+let collectFind list collector finder =
+    list 
+    |> List.collect (collector) 
+    |> List.find (finder)
 
-let collectPairs x = entries |> List.map (fun y -> (x, y))
-let findPairs (x, y) = x + y = 2020
+let pairsCollector x = entries |> List.map (fun y -> (x, y))
+let pairsFinder (x, y) = x + y = 2020
 
-let collectTriple x = entries |> List.collect (fun y -> entries |> List.map (fun z -> (x, y, z)))
-let findTriple (x, y, z) = x + y + z = 2020
+let triplesCollector x = entries |> List.collect (fun y -> entries |> List.map (fun z -> (x, y, z)))
+let triplesFinder (x, y, z) = x + y + z = 2020
 
-let x, y = collectFind entries collectPairs findPairs
-System.Console.WriteLine(sprintf "%i * %i = %i" x y (x * y))
+let x, y = collectFind entries pairsCollector pairsFinder
+printfn "Answer Part 1: %i * %i = %i" x y (x * y)
 
-let a, b, c = collectFind entries collectTriple findTriple
-System.Console.WriteLine(sprintf "%i * %i * %i = %i" a b c (a * b * c))
+let a, b, c = collectFind entries triplesCollector triplesFinder
+printfn "Answer Part 2: %i * %i * %i = %i" a b c (a * b * c)
+

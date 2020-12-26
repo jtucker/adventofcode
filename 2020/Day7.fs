@@ -1,40 +1,42 @@
 module codingforbeer.AdventOfCode.Day7
 
 open FParsec
-type UserState = unit // doesn't have to be unit, of course
-type Parser<'t> = Parser<'t, UserState>
 
-let bagParser: Parser<_> = manyCharsTill anyChar (skipString " bag" .>> optional (skipChar 's'))
-let skipContainParser: Parser<_> = spaces1 >>. skipString "contain" .>> spaces1
-let containerParser = pfloat .>> spaces1 .>>. bagParser
+let rules = fileText @"2020\assets\day7.txt" 
+
+let bagParser = manyCharsTill anyChar (skipString " bag" .>> optional (skipChar 's'))
+let skipContainParser = spaces1 >>. skipString "contain" .>> spaces1
+let containerParser = pint32 .>> spaces1 .>>. bagParser
 let containerChooserParser = ((stringReturn "no other bags" List.empty)<|> sepBy containerParser (skipString ", "))
 
 let parser =   
     sepEndBy (bagParser .>> skipContainParser .>>. containerChooserParser .>> pchar '.') skipNewline
 
-let rules = fileText @"2020\assets\day7.txt" 
-
 let getSuccessRules parser line =    
     match run parser line with
     | Failure _ -> failwith "Parsing error"
-    | Success (v, _, _) -> 
-        v |> List.collect(fun (bagColor, contents) -> contents |> List.map(fun (_, c) -> (c, bagColor)))
-
-let getContainersForKey (key, keyContainer) =
-    let c = keyContainer |> List.map snd
-    (key, c)
-
-let dictFormat = getSuccessRules parser rules
-                    |> List.groupBy fst
-                    |> List.map getContainersForKey
-                    |> dict
-
-let hasContents c =
-    match dictFormat.TryGetValue(c) with
-    | (true, contents) -> contents
-    | (false, _) -> List.empty
-
+    | Success (v, _, _) -> v
+        
 let rec getContainersForBag containers bags =
+    let getContainersForKey (key, keyContainer) =
+        let c = keyContainer |> List.map snd
+        (key, c)
+
+    let rulesFlipper rules = 
+        rules 
+        |> List.collect(fun (bagColor, contents) -> contents |> List.map(fun (_, c) -> (c, bagColor)))
+
+    let rulesDictionary = getSuccessRules parser rules
+                        |> rulesFlipper
+                        |> List.groupBy fst
+                        |> List.map getContainersForKey
+                        |> dict    
+
+    let hasContents c =
+        match rulesDictionary.TryGetValue(c) with
+        | (true, contents) -> contents
+        | (false, _) -> List.empty
+
     bags
     |> List.collect hasContents
     |> function 
@@ -46,3 +48,14 @@ let rec getContainersForBag containers bags =
 getContainersForBag List.empty ["shiny gold"]
 |> List.length
 |> printfn "Number of bags: %i"
+
+let rld = getSuccessRules parser rules 
+            |> dict
+
+let rec getCountOfBags bagColor = 
+    match rld.TryGetValue bagColor with   
+    | (true, []) -> 0
+    | (true, containers) -> containers |> List.sumBy (fun (c, bgc) -> c + (c * getCountOfBags bgc))
+    | (false, _) -> 0
+
+printfn "Count of bags: %i" (getCountOfBags "shiny gold")

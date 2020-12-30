@@ -1,32 +1,22 @@
 module codingforbeer.AdventOfCode.Day6
+
 open System
 
 let responses = fileText @"2020\assets\day6.txt"
-let blankLineSeperator = Environment.NewLine + Environment.NewLine
 
-let yesAnswerCounts (group: string) =
-    let isLetter = function
-        | '\013' | '\010' -> false
-        | _ -> true
-    let getYesAnswerCountForGroup g =
-        g |> Seq.toList |> List.distinct |> List.filter isLetter |> List.length
+let getAllYesAnswers items =
+    items |> (Array.collect (Seq.toArray) >> Array.distinct >> Array.length)
 
-    group.Split(blankLineSeperator, StringSplitOptions.RemoveEmptyEntries ||| StringSplitOptions.TrimEntries)
-    |> Array.map getYesAnswerCountForGroup
+let getAnswerCounts counter group = 
+    let splitter (splitOn: string) (str: string) = str.Split(splitOn, StringSplitOptions.RemoveEmptyEntries);
+    let singleSplitter = splitter Environment.NewLine
+    let doubleSplitter = splitter (Environment.NewLine + Environment.NewLine)
 
-printfn "Sum total of groups yes answers: %i" (yesAnswerCounts responses |> Array.sum)
+    Array.map (singleSplitter >> counter) (group |> doubleSplitter)
 
-let getEveryoneYesAnswers (group: string) =
-    let getAllSameAnswerForGroup (g: string) =
-        g.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries) 
-        |> Array.toList
-        |> List.map Set.ofSeq
-        |> List.reduce (Set.intersect)
-        |> Set.count
-        
+printfn "Sum total of groups yes answers: %i" (getAnswerCounts getAllYesAnswers responses |> Array.sum)
 
-    group.Split(blankLineSeperator, StringSplitOptions.RemoveEmptyEntries ||| StringSplitOptions.TrimEntries) 
-    |> Array.toList
-    |> List.map (getAllSameAnswerForGroup)
+let getEveryoneYesAnswers items =
+    items |> (Array.map Set.ofSeq >> Array.reduce Set.intersect >> Set.count)
 
-printfn "Sum total of groups same answers: %i" (getEveryoneYesAnswers responses |> List.sum)
+printfn "Sum total of groups same answers: %i" (getAnswerCounts getEveryoneYesAnswers responses |> Array.sum)

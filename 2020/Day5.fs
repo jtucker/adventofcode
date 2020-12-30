@@ -4,7 +4,7 @@ let inputLines = fileLines @"2020\assets\day5.txt"
 
 let getSeatList input = 
     let split x = Seq.toList x |> List.splitAt 7
-    let getPosition (range: int list) half =
+    let positionFolder (range: int list) half =
         match half with
         | 'F' | 'L' ->  range.[.. range.Length / 2 - 1]
         | 'B' | 'R' -> range.[range.Length / 2 ..]
@@ -16,13 +16,16 @@ let getSeatList input =
                  | [y] -> x * 8 + y
                  | _ -> 0
         | _ -> 0
+
+    let getPosition (rows, cols) =
+        (rows |> List.fold positionFolder [0..127], cols |> List.fold positionFolder [0..7])
     
-    (Seq.map (split >> ((fun (r, c) -> ((List.fold getPosition [0..127] r), (List.fold getPosition [0..7] c))) >> (seatNumber))) input)
+    input |> Seq.map (split >> getPosition >> seatNumber)
+    
 let seatList = getSeatList inputLines
 let getHighestSeat =  seatList |> Seq.max
 let getLowestSeat = seatList |> Seq.min
 let seatRange = [getLowestSeat .. getHighestSeat]
-
 let missing = seatRange |> List.except seatList
 
 printfn "Highest Seat: %i" getHighestSeat

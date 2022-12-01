@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "paket": {
-      "version": "5.257.0",
+      "version": "7.2.0",
       "commands": [
         "paket"
       ]
@@ -12,6 +12,12 @@
       "version": "4.6.0-alpha-004",
       "commands": [
         "fantomas"
+      ]
+    },
+    "dotnet-outdated-tool": {
+      "version": "4.3.2",
+      "commands": [
+        "dotnet-outdated"
       ]
     }
   }

@@ -8,12 +8,6 @@
         "paket"
       ]
     },
-    "fantomas-tool": {
-      "version": "4.6.0-alpha-004",
-      "commands": [
-        "fantomas"
-      ]
-    },
     "dotnet-outdated-tool": {
       "version": "4.3.2",
       "commands": [

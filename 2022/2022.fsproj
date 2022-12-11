@@ -5,6 +5,7 @@
     <RootNamespace>_2022</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="day2.fs" />
     <Compile Include="day1.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

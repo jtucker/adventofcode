@@ -59,15 +59,27 @@ let calculateTotalScore (data: string array) =
     |> Array.map(fun (opponent, player) -> (player, findWinner player opponent))
     |> Array.sumBy (fun (player, win) -> calculateScore player win)
 
-open Xunit
-open Swensen.Unquote
+//#open Xunit
+//open Swensen.Unquote
 
-let [<Fact>] ``test data should equal 15`` () =
-    let testData = File.ReadAllLines ("./2022/data/day2-test.txt") |> calculateTotalScore
+// let [<Fact>] ``test data should equal 15`` () =
+//     let testData = File.ReadAllLines ("./2022/data/day2-test.txt") |> calculateTotalScore
 
 let actualScore = File.ReadAllLines ("./2022/data/day2.txt") |> calculateTotalScore
+
+let getShapeForWin shape win =
+    match (shape, win) with
+    | Rock, Opponent -> Scissors
+    | Rock, Player -> Paper
+    | Scissors, Opponent -> Paper
+    | Scissors, Player -> Rock
+    | Paper, Opponent -> Rock
+    | Paper, Player -> Scissors
+    | _, Draw -> shape
 
 let part2calculate (data: string array) =
     data
     |> Array.map (fun x -> x.Split(" ", StringSplitOptions.RemoveEmptyEntries))
     |> Array.map (fun x -> (Shape.GetShape x[0], Win.GetWin x[1]))
+    |> Array.map (fun (opponent, win) -> (getShapeForWin opponent win, win))
+    |> Array.sumBy (fun (player, win) -> calculateScore player win)

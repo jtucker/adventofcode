@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -5,6 +6,7 @@
     <RootNamespace>_2022</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="day4.fs" />
     <Compile Include="day3.fs" />
     <Compile Include="day2.fs" />
     <Compile Include="day2.fs" />
@@ -13,7 +15,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="spectre.console" Version="0.45.0" />
-    <PackageReference Include="unquote" Version="6.1.0" />
-    <PackageReference Include="xunit" Version="2.4.2" />
   </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

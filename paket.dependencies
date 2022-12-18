@@ -1,9 +1,11 @@
 source https://api.nuget.org/v3/index.json
 
 storage: none
-framework: net50, netcoreapp3.1, netstandard2.0, netstandard2.1
+framework: net60, net50, netcoreapp3.1, netstandard2.0, netstandard2.1
 
 nuget Argu
-nuget FParsec 1.1.1
+nuget FParsec
 nuget xunit
 nuget xunit.runner.visualstudio
+nuget fsunit.xunit
+nuget unquote

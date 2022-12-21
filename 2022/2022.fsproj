@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,6 +6,7 @@
     <RootNamespace>_2022</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="day5.fs" />
     <Compile Include="day4.fs" />
     <Compile Include="day3.fs" />
     <Compile Include="day2.fs" />

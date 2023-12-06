@@ -29,7 +29,7 @@ let getWordsAndInts (input: string) =
    let last = (textInts |> List.choose (FirstLastIndexBy.lastIndexBy input) |> List.maxBy fst) |> snd
    $"{first}{last}" |> int
    
-let getInts (input : string) =
+let getInts input =
     let ints = input
             |> Seq.map (string >> Int32.TryParse)
             |> Seq.filter fst

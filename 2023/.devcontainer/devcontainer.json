@@ -7,8 +7,10 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-dotnettools.csharp",
-        "Ionide.Ionide-fsharp"
+        "ms-dotnettools.csdevkit",
+        "Ionide.Ionide-fsharp",
+        "GitHub.copilot-chat",
+        "tintoy.msbuild-project-tools"
       ],
       "settings": {
         "terminal.integrated.shell.linux": "/bin/bash"

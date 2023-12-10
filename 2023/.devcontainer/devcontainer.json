@@ -1,9 +1,8 @@
 {
   "name": "Advent of Code 2023",
   "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
-  "features": {
-    "ghcr.io/devcontainers/features/powershell:1": {}
-  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
       "extensions": [

@@ -1,5 +1,6 @@
 ﻿module AOC2023.Common
 
+open System
 open System.IO
 
 let readInput path =
@@ -17,3 +18,12 @@ module FirstLastIndexBy =
     let lastIndexBy (line: string) (search: string, value) =
         line.LastIndexOf(search) |> toOption |> Option.map (fun x -> (x, value))
         
+module String =
+    let splitRows (s: string) = 
+        s.Split([| "\n"; Environment.NewLine |], StringSplitOptions.RemoveEmptyEntries)
+    let split (c: char) (s: string) = 
+        s.Split([| c |], StringSplitOptions.RemoveEmptyEntries)
+    let trim (c: char) (s: string) = 
+        s.Trim([| c |])
+    let toInt (s: string) = 
+        Int32.Parse(s)

@@ -1,25 +1,22 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>net8.0</TargetFramework>
-        <RootNamespace>AOC2023</RootNamespace>
-        <GenerateProgramFile>false</GenerateProgramFile>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <Compile Include="Common.fs" />
-        <Compile Include="Day01.fs" />
-        <Compile Include="Day02.fs" />
-        <Compile Include="Program.fs" />
-        <Content Include="Inputs/*">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="FParsec" Version="2.0.0-beta2" />
-    </ItemGroup>
-
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>AOC2023</RootNamespace>
+    <GenerateProgramFile>false</GenerateProgramFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Common.fs" />
+    <Compile Include="Day01.fs" />
+    <Compile Include="Day02.fs" />
+    <Compile Include="Day4.fs" />
+    <Compile Include="Program.fs" />
+    <Content Include="Inputs/*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FParsec" Version="2.0.0-beta2" />
+  </ItemGroup>
 </Project>

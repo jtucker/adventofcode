@@ -6,7 +6,6 @@ open Common
 let calculatePoints (values: int list) =
     Math.Pow(2.0, float (values.Length - 1)) |> int
 
-let calculateCards (values: int list list) =
 
 let parse (card: string) = 
     let intersect (listOfList: int list list) =
@@ -26,6 +25,10 @@ let parse (card: string) =
                 |> List.map int)
 
     values |> intersect
+
+(*
+    Card 1 -> 4 matches -> 
+*)
 
 let test = """
 Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53

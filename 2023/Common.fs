@@ -1,11 +1,15 @@
-﻿module AOC2023.Common
+﻿[<AutoOpen>]
+module AOC2023.Common
 
 open System
 open System.IO
 
 let readInput path =
     File.ReadAllLines $"Inputs/{path}"
-    
+
+let readInputAsString path =
+    File.ReadAllText path = $"Inputs/{path}"
+
 module FirstLastIndexBy =
     let private toOption =
         function
